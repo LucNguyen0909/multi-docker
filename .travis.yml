@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t luke/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t songluc/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true luke/react-test npm run test -- --coverage
+  - docker run -e CI=true songluc/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t luke/multi-client ./client
-  - docker build -t luke/multi-nginx ./nginx
-  - docker build -t luke/multi-server ./server
-  - docker build -t luke/multi-worker ./worker
+  - docker build -t songluc/multi-client ./client
+  - docker build -t songluc/multi-nginx ./nginx
+  - docker build -t songluc/multi-server ./server
+  - docker build -t songluc/multi-worker ./worker
   #login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take those images and push them to docker hub
-  - docker push luke/multi-client
-  - docker push luke/multi-nginx
-  - docker push luke/multi-server
-  - docker push luke/multi-worker
+  - docker push songluc/multi-client
+  - docker push songluc/multi-nginx
+  - docker push songluc/multi-server
+  - docker push songluc/multi-worker
