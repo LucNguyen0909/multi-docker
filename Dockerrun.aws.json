@@ -1,0 +1,11 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "songluc/multi-client",
+            "hostname": "client",
+            "essential": true
+        }
+    ]
+}
