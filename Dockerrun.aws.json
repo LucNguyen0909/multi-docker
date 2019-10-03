@@ -5,7 +5,13 @@
             "name": "client",
             "image": "songluc/multi-client",
             "hostname": "client",
-            "essential": true
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "songluc/multi-server",
+            "hostname": "client",
+            "essential": false
         }
     ]
 }
