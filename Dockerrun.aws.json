@@ -10,8 +10,26 @@
         {
             "name": "server",
             "image": "songluc/multi-server",
-            "hostname": "client",
+            "hostname": "api",
             "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "songluc/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "songluc/multi-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
         }
     ]
 }
