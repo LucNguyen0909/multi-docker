@@ -20,3 +20,15 @@ after_success:
   - docker push songluc/multi-nginx
   - docker push songluc/multi-server
   - docker push songluc/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-573320880751
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_accsess_key:
+    secure: $AWS_SCRET_KEY
